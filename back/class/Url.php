@@ -9,7 +9,7 @@ class Url
      *
      * @return string
      */
-    public function getID(int $lengthUniq)
+    public function get_ID(int $lengthUniq)
     {
         $characters = '0123456789ABCDEF';
         $randomString = '';
