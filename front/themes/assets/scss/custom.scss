@@ -1,0 +1,12 @@
+@import "base/mixin";
+@import "base/clear";
+
+body {background-color: #9fcdff}
+header, footer {background-color: $black; color: $white;}
+nav { background-color: #0b2e13}
+main {background-color: #0069d9}
+aside {background-color: #6f42c1}
+section {background-color: #34ce57}
+
+.wrapper {background-color: antiquewhite}
+.heading {background-color: #0f6674}
