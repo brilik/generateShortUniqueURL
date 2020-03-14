@@ -45,6 +45,6 @@ class Url
      */
     public function get_uniq_url(string $url, int $lengthUniq = 10)
     {
-        return $this->get_domain($url) . '/'. $this->getID($lengthUniq);
+        return $this->get_domain($url) . '/'. $this->get_ID($lengthUniq);
     }
 }
