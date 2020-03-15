@@ -56,9 +56,11 @@ function ajax(form, data) {
     ajaxObject.onreadystatechange = function () {
         if (ajaxObject.readyState === 4 && ajaxObject.status === 200) { // get answer success and ready from processing
             let res = JSON.parse(ajaxObject.responseText)
-            if(res.location) {
+            if (res.location) {
                 document.location.href = res.location
-            }else {
+            } else if (res.result) {
+                alert(res.result);
+            } else {
                 createAndShowBlockResult(form, ajaxObject.responseText) // create block result and show
                 console.log(res)
             }
