@@ -15,7 +15,7 @@ $url = new Url();
 
 // Check existence URL in database
 if ($res = $db->is_existence($__post['url'], 'url')) {
-    exit(json_encode($url->get_domain($res['url']) . '/' . $res['token']));
+    exit(json_encode($_SERVER['HTTP_ORIGIN'] . '/' . $res['token']));
 }
 
 // create token
@@ -33,5 +33,5 @@ $db->query("INSERT INTO uniq_url (token, url) VALUE ('{$__post['token']}', '{$__
 $db->close();
 
 // Show in front
-exit(json_encode($url->get_domain($__post['url']) . '/' . $__post['token']));
+exit(json_encode($_SERVER['HTTP_ORIGIN'] . '/' . $__post['token']));
 
