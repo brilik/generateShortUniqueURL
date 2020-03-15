@@ -28,6 +28,7 @@ function createAndShowBlockResult(form, data) {
     let result = document.createElement('div')
     let resultForCopy = document.createElement('input')
     let buttonCopyResultToClipboard = document.createElement('button')
+    buttonCopyResultToClipboard.setAttribute('type', 'button')
     buttonCopyResultToClipboard.className = "btn btn-primary btn-block"
     buttonCopyResultToClipboard.onclick = () => (copyToClipboard())
     buttonCopyResultToClipboard.innerText = "Copy"
