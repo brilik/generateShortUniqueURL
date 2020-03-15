@@ -125,7 +125,7 @@ class Debug
                 }
                 break;
             case 'json':
-                echo json_encode($data);
+                exit(json_encode($data));
                 break;
             default:
                 print_r($data);
