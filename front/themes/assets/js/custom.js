@@ -61,7 +61,7 @@ function ajax(form, data) {
             } else if (res.result) {
                 alert(res.result);
             } else {
-                createAndShowBlockResult(form, ajaxObject.responseText) // create block result and show
+                createAndShowBlockResult(form, res) // create block result and show
                 console.log(res)
             }
         } else {
