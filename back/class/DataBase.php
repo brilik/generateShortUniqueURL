@@ -5,7 +5,7 @@ class DataBase
     protected $query;
     protected $show_error  = true;
     protected $query_close = true;
-    public $query_count = 0;
+    public    $query_count = 0;
 
     function __construct(string $name, string $host = 'localhost', string $user = 'root', string $pass = '', string $charset = 'UTF-8')
     {
@@ -26,9 +26,12 @@ class DataBase
     {
         $res = $this->connection->query($sql);
         if (is_object($res)) {
-            $res = $res->fetch_assoc();
+            $arr = [];
+            while ($item = $res->fetch_assoc() ){
+                $arr[] = $item;
+            }
 
-            return $res;
+            return $arr;
         }
 
         return $res;
