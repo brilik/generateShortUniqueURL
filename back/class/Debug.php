@@ -17,7 +17,7 @@ class Debug
             self::show($data, 'print_r');
 
         } catch ( Exception $e ) {
-            echo "Error: " . $e->getMessage();
+            echo "Error debug: " . $e->getMessage();
         }
     }
 
@@ -36,7 +36,7 @@ class Debug
             self::show($data, 'print_r', true);
 
         } catch ( Exception $e ) {
-            echo "Error: " . $e->getMessage();
+            echo "Error debug: " . $e->getMessage();
         }
     }
 
@@ -55,7 +55,7 @@ class Debug
             self::show($data, 'var_dump', false, true);
 
         } catch ( Exception $e ) {
-            echo "Error: " . $e->getMessage();
+            echo "Error debug: " . $e->getMessage();
         }
     }
 
@@ -74,7 +74,7 @@ class Debug
             self::show($data, 'var_export', false, true);
 
         } catch ( Exception $e ) {
-            echo "Error: " . $e->getMessage();
+            echo "Error debug: " . $e->getMessage();
         }
     }
 
