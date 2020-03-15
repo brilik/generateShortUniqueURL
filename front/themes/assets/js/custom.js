@@ -55,7 +55,13 @@ function ajax(form, data) {
     ajaxObject.send('url=' + encodeURIComponent(data)) // send POST-request
     ajaxObject.onreadystatechange = function () {
         if (ajaxObject.readyState === 4 && ajaxObject.status === 200) { // get answer success and ready from processing
-            createAndShowBlockResult(form, ajaxObject.responseText) // create block result and show
+            let res = JSON.parse(ajaxObject.responseText)
+            if(res.location) {
+                document.location.href = res.location
+            }else {
+                createAndShowBlockResult(form, ajaxObject.responseText) // create block result and show
+                console.log(res)
+            }
         } else {
         }
     }
