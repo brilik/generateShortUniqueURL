@@ -2,6 +2,11 @@
 
 class Debug
 {
+    /**
+     * Show debug print_r.
+     *
+     * @param array $data
+     */
     public static function pr($data = [])
     {
         try {
@@ -16,6 +21,11 @@ class Debug
         }
     }
 
+    /**
+     * Show debug print_r hidden (show comment html response).
+     *
+     * @param array $data
+     */
     public static function prh($data = [])
     {
         try {
@@ -30,6 +40,11 @@ class Debug
         }
     }
 
+    /**
+     * Show debug var_dump and die.
+     *
+     * @param array $data
+     */
     public static function dd($data = [])
     {
         try {
@@ -44,30 +59,92 @@ class Debug
         }
     }
 
+    /**
+     * Show debug var_export.
+     *
+     * @param array $data
+     */
+    public static function ve($data = [])
+    {
+        try {
+            if (empty($data)) {
+                throw new Exception('Need entered arguments for debugging.');
+            }
+
+            self::show($data, 'var_export', false, true);
+
+        } catch ( Exception $e ) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    /**
+     * Show debug in json format. (Recommend for ajax)
+     *
+     * @param $toObject
+     */
+    public static function jsn($toObject)
+    {
+        self::show($toObject, 'json');
+    }
+
+    /**
+     * Show result debug.
+     *
+     * @param        $data
+     * @param string $func
+     * @param bool   $hiddent
+     * @param bool   $die
+     */
     private static function show($data, $func = 'print_r', $hiddent = false, $die = false)
     {
         if ($hiddent === true) {
             echo '<!--';
         }
 
-        echo '<pre style="color:darkred">Hello<br>';
 
         switch ($func) {
             case 'print_r':
+                echo '<pre style="color:darkred">Hello<br>';
                 print_r($data);
+                echo '</pre>';
+                break;
+            case 'var_export':
+                echo '<pre style="color:darkred">Hello<br>';
+                var_export($data);
+                echo '</pre>';
                 break;
             case 'var_dump':
+                echo '<pre style="color:darkred">Hello<br>';
                 var_dump($data);
+                echo '</pre>';
                 if ($die === true) {
                     die;
                 }
                 break;
+            case 'json':
+                echo json_encode($data);
+                break;
+            default:
+                print_r($data);
+                break;
         }
-
-        echo '</pre>';
 
         if ($hiddent === true) {
             echo '-->';
         }
+    }
+
+    /**
+     * Debug 500 errors.
+     */
+    public static function server_error(){
+        register_shutdown_function(function(){
+            if (error_get_last()) {
+                echo '<pre style="color:darkred">Hello<br>';
+                var_export(error_get_last());
+                echo '</pre>';
+            }
+        });
     }
 }
