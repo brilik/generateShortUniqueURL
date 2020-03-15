@@ -1,19 +1,18 @@
 <?php
-
 class Url
 {
     /**
-     * Get random name in hexidecimal length = n.
+     * Get random token in hexidecimal length = n.
      *
-     * @param int $lengthUniq
+     * @param int $lengthToken
      *
      * @return string
      */
-    public function get_ID(int $lengthUniq)
+    public function get_token(int $lengthToken)
     {
         $characters = '0123456789ABCDEF';
         $randomString = '';
-        for ($i = 0; $i < $lengthUniq; $i++) {
+        for ($i = 0; $i < $lengthToken; $i++) {
             $index = rand(0, strlen($characters) - 1);
             $randomString .= $characters[$index];
         }
@@ -45,6 +44,6 @@ class Url
      */
     public function get_uniq_url(string $url, int $lengthUniq = 10)
     {
-        return $this->get_domain($url) . '/'. $this->get_ID($lengthUniq);
+        return $this->get_domain($url) . '/' . $this->get_token($lengthUniq);
     }
 }
