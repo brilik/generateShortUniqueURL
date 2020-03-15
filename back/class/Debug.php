@@ -85,6 +85,8 @@ class Debug
      */
     public static function jsn($toObject)
     {
+        if(empty($toObject))
+            $toObject = false;
         self::show($toObject, 'json');
     }
 
