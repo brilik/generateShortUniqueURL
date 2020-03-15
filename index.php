@@ -7,5 +7,13 @@ require_once DIR_BACK . '/class/Route.php';
 // functions
 require_once DIR_BACK . '/functions.php';
 // route
-// enqueue
-the_block('index');
+
+$route = new Route();
+
+if ($routes) {
+    foreach ($routes as $item) {
+        $route->add($item);
+    }
+}
+
+$route->init();
