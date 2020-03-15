@@ -6,17 +6,6 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Get Short Unique URL</title>
-    <style>
-        *, body { padding: 0; margin: 0;}
-        body {background-color: #9fcdff}
-        .wrapper {background-color: antiquewhite}
-        header, footer {background-color: black; color: white;}
-        nav { background-color: #0b2e13}
-        .heading {background-color: #0f6674}
-        main {background-color: #0069d9}
-        aside {background-color: #6f42c1}
-        section {background-color: #34ce57}
-    </style>
 </head>
 <body>
 <div class="wrapper">
@@ -41,7 +30,7 @@
                 <!-- start form get unique url -->
                 <div class="unique-url__generate">
                     <form action="/" method="post" id="generate">
-                        <input type="url" name="url">
+                        <input type="url" name="url" placeholder="Enter URL...">
                         <input type="submit" value="Get unique URL">
                     </form>
                 </div>
@@ -54,6 +43,7 @@
 
 </div>
 <link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/assets/css/bootstrap-grid.min.css">
+<!--<link rel="stylesheet" href="--><?//= get_template_directory_uri(); ?><!--/assets/css/custom.css">-->
 <script src="<?= get_template_directory_uri(); ?>/assets/js/custom.js"></script>
 </body>
 </html>
