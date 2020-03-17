@@ -12,37 +12,47 @@
 
 
     <header class="container-fluid">
-        <!-- start form login -->
-        <!-- end form login -->
         <div class="row">
-            <nav class="navbar navbar-default">
-                <ul class="nav navbar-nav">
-                    <li><a href="/">Home</a></li>
-                </ul>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
+                <a class="navbar-brand" href="/">LOGO</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                    </ul>
+                </div>
+                <span class="navbar-text">
+                    <a href="/">Go to suit</a>
+                </span>
             </nav>
         </div>
     </header>
-    <div class="container">
+
+    <div class="container mh-100">
         <?php if(is_user_logged_in()): ?>
-            <div class="heading row">Welcome, <?php is_user_logged_in(true); ?></div>
+            <div class="row heading justify-content-center p-4 text-dark font-weight-bold">Welcome, <?php is_user_logged_in(true); ?></div>
         <?php endif; ?>
         <main class="row">
-            <aside class="col-md-3">aside</aside>
-            <section class="col-md-9">
+            <section class="col-lg-12">
                 <?php if (empty($args)): ?>
                     <p>You not have URL.</p>
                 <?php else: ?>
                     <div class="row">
                         <?php foreach ($args as $item): ?>
-                            <div class="col-xl-4">
+                            <div class="col-xl-6">
                                 <div class="d-flex flex-column">
                                 <div class="bg-dark text-white m-2">
                                     <div class="p-2">ID: <?= $item['id']; ?></div>
-                                    <div class="p-2">token: <?= $item['token']; ?></div>
                                     <div class="p-2">url: <?= $item['url']; ?></div>
-                                    <div class="p-2 text-center">
-                                        <button type="button" class="btn btn-primary">Edit</button>
-                                        <button type="button" class="btn btn-danger">Remove</button>
+                                    <div class="p-2">token: <?= $item['token']; ?></div>
+                                    <div class="p-2 text-right">
+                                        <button class="btn btn-primary">Go</button>
+                                        <button class="btn btn-info">Edit</button>
+                                        <button class="btn btn-danger">Remove</button>
                                     </div>
                                 </div>
                                 </div>
@@ -53,7 +63,15 @@
             </section>
         </main>
     </div>
-    <footer class="container-fluid">footer</footer>
+    <footer class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="copyright text-center p-3 text-uppercase">
+                    <a class="text-white" href="mailto:megabrilik@gmail.com">Vitalii&nbsp;Bryl</a>&nbsp;&copy&nbsp;1993-<?=date('Y'); ?>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 
 </div>

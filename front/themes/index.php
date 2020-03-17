@@ -14,14 +14,14 @@
     <header class="container-fluid">
         <div class="row">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
-                <a class="navbar-brand" href="#">LOGO</a>
+                <a class="navbar-brand" href="/">LOGO</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="/">Home</a>
                         </li>
                     </ul>
                 </div>
@@ -35,9 +35,9 @@
             </nav>
         </div>
     </header>
-    <div class="container  vh-100">
+    <div class="container vh-100">
         <?php if(is_user_logged_in()): ?>
-            <div class="row heading justify-content-center welcome-text">Welcome, <?php is_user_logged_in(true); ?></div>
+            <div class="row heading justify-content-center p-4 text-dark font-weight-bold">Welcome, <?php is_user_logged_in(true); ?></div>
         <?php endif; ?>
         <main class="row">
 <!--        <aside class="col-md-3">aside</aside>-->
@@ -56,8 +56,8 @@
         <div class="row">
             <div class="col">
                 <div class="copyright text-center p-3 text-uppercase">
-                    <a class="text-white" href="mailto:megabrilik@gmail.com">Vitalii Bryl</a>
-                    &copy 1993-<?=date('Y'); ?></div>
+                    <a class="text-white" href="mailto:megabrilik@gmail.com">Vitalii&nbsp;Bryl</a>&nbsp;&copy&nbsp;1993-<?=date('Y'); ?>
+                </div>
             </div>
         </div>
     </footer>
