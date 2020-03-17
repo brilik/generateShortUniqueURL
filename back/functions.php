@@ -41,7 +41,7 @@ if ( ! function_exists('admin_url')) {
 if ( ! function_exists('is_user_logged_in')) {
     function is_user_logged_in($show = false)
     {
-        if ($show && isset($_COOKIE['signin'])) {
+        if ($show && isset($_COOKIE['login'])) {
             echo $_COOKIE['login'];
 
             return true;
