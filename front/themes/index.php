@@ -11,41 +11,43 @@
 </head>
 <body>
 <div class="wrapper">
-
-
     <header class="container-fluid">
-        <!-- start form login -->
-        <!-- end form login -->
         <div class="row">
-            <nav class="navbar navbar-default">
-                <ul class="nav navbar-nav">
-                    <li><a href="/">Home</a></li>
-                    <li>
-                        <?php if(is_user_logged_in()):  ?>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100">
+                <a class="navbar-brand" href="#">LOGO</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                    </ul>
+                </div>
+                <span class="navbar-text">
+                    <?php if(is_user_logged_in()):  ?>
                         <a href="/admin">Dashboard</a>
-                        <?php else: ?>
+                    <?php else: ?>
                         <a href="/signin">Login\Registration</a>
-                        <?php endif; ?>
-                    </li>
-                </ul>
+                    <?php endif; ?>
+                </span>
             </nav>
         </div>
     </header>
-    <div class="container">
+    <div class="container  vh-100">
         <?php if(is_user_logged_in()): ?>
-            <div class="heading row">Welcome, <?php is_user_logged_in(true); ?></div>
+            <div class="row heading justify-content-center welcome-text">Welcome, <?php is_user_logged_in(true); ?></div>
         <?php endif; ?>
         <main class="row">
-            <aside class="col-md-3">aside</aside>
-            <section class="col-md-9">
+<!--        <aside class="col-md-3">aside</aside>-->
+            <section class="col-lg-12 unique-url__generate mt-5">
                 <!-- start form get unique url -->
-                <div class="unique-url__generate">
-                    <form action="/" method="post" id="generate">
-                        <input type="url" name="url" placeholder="Enter URL...">
-                        <input type="submit" value="Get unique URL">
+                    <form class="" action="/" method="post" id="generate">
+                        <input class="form-control" type="url" name="url" placeholder="Enter URL...">
+                        <input class="btn btn-outline-success" type="submit" value="Get unique URL">
                         <input type="hidden" name="action" value="generate">
                     </form>
-                </div>
                 <!-- end form get unique url -->
             </section>
         </main>
@@ -54,8 +56,8 @@
 
 
 </div>
-<link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/assets/css/bootstrap-grid.min.css">
-<!--<link rel="stylesheet" href="--><?//= get_template_directory_uri(); ?><!--/assets/css/custom.css">-->
+<link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/assets/css/custom.css">
 <script src="<?= get_template_directory_uri(); ?>/assets/js/custom.js"></script>
 </body>
 </html>

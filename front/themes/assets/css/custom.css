@@ -1,30 +1,23 @@
-*, body {
-  padding: 0;
-  margin: 0; }
-
-body {
-  background-color: #9fcdff; }
-
 header, footer {
-  background-color: #3a3a3a;
+  background-color: #343a40;
   color: #fafafa; }
 
-nav {
-  background-color: #0b2e13; }
+.welcome-text {
+  color: #fafafa;
+  padding: 3vh 0; }
 
-main {
-  background-color: #0069d9; }
+section form {
+  display: flex;
+  flex-flow: column;
+  margin-top: 10vh;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 736px;
+  overflow: hidden; }
+  section form .form-control {
+    width: 100vh; }
 
-aside {
-  background-color: #6f42c1; }
-
-section {
-  background-color: #34ce57; }
-
-.wrapper {
-  background-color: antiquewhite; }
-
-.heading {
-  background-color: #0f6674; }
+.unique-url__result {
+  margin-top: 4vh; }
 
 /*# sourceMappingURL=custom.css.map */
