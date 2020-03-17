@@ -52,7 +52,15 @@
             </section>
         </main>
     </div>
-    <footer class="container-fluid">footer</footer>
+    <footer class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="copyright text-center p-3 text-uppercase">
+                    <a class="text-white" href="mailto:megabrilik@gmail.com">Vitalii Bryl</a>
+                    &copy 1993-<?=date('Y'); ?></div>
+            </div>
+        </div>
+    </footer>
 
 
 </div>
