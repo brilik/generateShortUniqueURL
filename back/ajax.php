@@ -41,6 +41,7 @@ if ($_POST->action == 'singin') {
         $output['password'] = $password;
     }
     if($output['res'] === $_POST->action){
+        setcookie("login", $_POST->login, time()+3600, "/","", 0);
         setcookie("signin", true, time()+3600, "/","", 0);
     }
     die(json_encode($output));
