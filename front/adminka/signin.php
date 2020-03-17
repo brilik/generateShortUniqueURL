@@ -24,13 +24,12 @@ if(is_user_logged_in()){
                         <form method="post" class="justify-content-center">
                             <div class="form-group">
                                 <label class="sr-only">Name</label>
-                                <input type="text" name="login" class="form-control" placeholder="Enter login">
-                                <small class="form-text text-danger">We'll never share your email with anyone else.</small>
+                                <input type="text" name="login" class="form-control" placeholder="Enter login" value="<?=$_COOKIE['login']; ?>">
+<!--                                <small class="form-text text-danger">We'll never share your email with anyone else.</small>-->
                             </div>
                             <div class="form-group">
-                                <label class="sr-only">Email</label>
+                                <label class="sr-only">Password</label>
                                 <input type="password" name="password" class="form-control" placeholder="Password">
-                                <small class="form-text text-danger">We'll never share your email with anyone else.</small>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-block">Login</button>

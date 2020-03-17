@@ -6,44 +6,68 @@ function load() {
 
     form.onsubmit = (event) => {
         event.preventDefault() // stop send form
-        var action = document.getElementById('action').value
         var data = {
-            action: document.querySelector("#signup input[name=action]").value,
-            login: document.querySelector("#signup input[name=login]").value,
-            password: document.querySelector("#signup input[name=password]").value
+            action: document.querySelector("input[name=action]").value,
         }
-        if(action === 'singup'){
-            ajax(form, data)
+        if(document.querySelector("input[name=login]") != null){
+            data.login = document.querySelector("input[name=login]").value
         }
-        // let content = input.value // get content
-        // ajax(form, content) // content send to server and get result
+        if(document.querySelector("input[name=password]") != null){
+            data.password = document.querySelector("input[name=password]").value
+        }
+        if(document.querySelector("input[name=repassword]") != null){
+            data.repassword = document.querySelector("input[name=repassword]").value
+        }
+        ajax(form, data) // content send to server and get result
     }
 
 }
 
 function ajax(form, data) {
     let ajaxObject = new XMLHttpRequest()
-    let send = ''
-    if(data.action === 'generate'){
-        send = 'action=' + encodeURIComponent(data) + 'url=' + encodeURIComponent(data);
-    } else if(data.action === 'signup'){
-        send = 'action=' + encodeURIComponent(data) + 'login=' + encodeURIComponent(data.login) + '&password=' + encodeURIComponent(data.password);
-    } else if(data.action === 'signin'){
-        send = 'action=' + encodeURIComponent(data) + 'login=' + encodeURIComponent(data.login) + '&password=' + encodeURIComponent(data.password) + '&repassword=' + encodeURIComponent(data.password);
-    }
     ajaxObject.open('POST', 'back/ajax.php') // open connection
     ajaxObject.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded') // install format
-    ajaxObject.send(send) // send POST-request
+    ajaxObject.send('obj=' + JSON.stringify(data)) // send POST-request
     ajaxObject.onreadystatechange = function () {
         if (ajaxObject.readyState === 4 && ajaxObject.status === 200) { // get answer success and ready from processing
-            let res = JSON.parse(ajaxObject.responseText)
-            if (res.location) {
-                document.location.href = res.location
-            } else if (res.result) {
-                alert(res.result);
-            } else {
-                createAndShowBlockResult(form, res) // create block result and show
+
+            // ERROR start
+            console.error(
+                ajaxObject.responseText
+            );
+            // eof ERROR
+            let resObj = JSON.parse(ajaxObject.responseText)
+            // VALIDATION
+            if (resObj.res === 'error') {
+                if(resObj.login){
+                    alert("Error: " + resObj.login)
+                } else if(resObj.exist){
+                    alert("Error: " + resObj.exist)
+                } else if(resObj.password){
+                    alert("Error: " + resObj.password)
+                }
+                else {
+                    alert("See error in console browser")
+                    console.error(res)
+                }
+            } else if (resObj.res === 'singup') {
+                document.location.href = 'signin'
+            } else if (resObj.res === 'singin') {
+                document.location.href = 'admin'
+            }
+
+
+
+
+            else if (resObj.location) {
+                document.location.href = resObj.location
+            } else if (resObj.action) {
                 console.log(res)
+            } else if (resObj.result) {
+                alert(resObj.result);
+            } else {
+                createAndShowBlockResult(form, resObj) // create block result and show
+                console.log(resObj)
             }
         } else {
         }

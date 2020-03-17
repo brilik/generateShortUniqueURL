@@ -23,7 +23,9 @@
         </div>
     </header>
     <div class="container">
-        <div class="heading row">heading</div>
+        <?php if(is_user_logged_in()): ?>
+            <div class="heading row">Welcome, <?php is_user_logged_in(true); ?></div>
+        <?php endif; ?>
         <main class="row">
             <aside class="col-md-3">aside</aside>
             <section class="col-md-9">
