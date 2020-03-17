@@ -43,6 +43,7 @@
                     <form action="/" method="post" id="generate">
                         <input type="url" name="url" placeholder="Enter URL...">
                         <input type="submit" value="Get unique URL">
+                        <input type="hidden" name="action" value="generate">
                     </form>
                 </div>
                 <!-- end form get unique url -->

@@ -12,8 +12,13 @@ function initResultGenerateURL(formId) {
 
     form.onsubmit = (event) => {
         event.preventDefault() // stop send form
-        let content = input.value // get content
-        ajax(form, content) // content send to server and get result
+        let data = {
+            action: form.querySelector('input[name=action]').value
+        }
+        if (document.querySelector("input[name=url]")) {
+            data.url = document.querySelector("input[name=url]").value
+        }
+        ajax(form, data) // content send to server and get result
     }
 }
 
@@ -52,17 +57,20 @@ function ajax(form, data) {
 
     ajaxObject.open('POST', 'back/ajax.php') // open connection
     ajaxObject.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded') // install format
-    ajaxObject.send('url=' + encodeURIComponent(data)) // send POST-request
+    ajaxObject.send('obj=' + JSON.stringify(data)) // send POST-request
     ajaxObject.onreadystatechange = function () {
         if (ajaxObject.readyState === 4 && ajaxObject.status === 200) { // get answer success and ready from processing
-            let res = JSON.parse(ajaxObject.responseText)
-            if (res.location) {
-                document.location.href = res.location
-            } else if (res.result) {
-                alert(res.result);
+            let resObj = JSON.parse(ajaxObject.responseText)
+            if (resObj.res === "test") {
+                console.log(resObj)
+            } else if (resObj.res === "generate") {
+                console.log(resObj)
+                createAndShowBlockResult(form, resObj.url) // create block result and show
+            } else if (resObj.res === "error") {
+                alert("ERROR: " + resObj.url)
             } else {
-                createAndShowBlockResult(form, res) // create block result and show
-                console.log(res)
+                alert(resObj.url)
+                console.warn(resObj)
             }
         } else {
         }

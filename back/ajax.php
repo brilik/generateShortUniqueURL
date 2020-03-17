@@ -45,39 +45,32 @@ if ($_POST->action == 'singin') {
     }
     die(json_encode($output));
 }
-
-
-// ********************* GOOOOD
-//die(json_encode(['error'=>'END']));
-if (!isset($_POST->url) || empty($_POST->url)) {
-    die(json_encode(['result' => 'Your need enter URL']));
+if ($_POST->action == 'generate') {
+    $output = [];
+    if ($urlValid = is_valid_url($_POST->url)) {
+        $output['res'] = 'error';
+        $output['url'] = $urlValid;
+        die(json_encode($output));
+    }
+    $__post = $_POST;
+    // Check existence URL in database
+    if ($urlExistence = is_exist_url($db, $__post->url)) {
+        $output['res'] = 'generate';
+        $output['url'] = $urlExistence;
+        die(json_encode($output));
+    }
+    newToken:
+    // create token
+    $token = $url->get_token(6);
+    // Check existence token in database
+    if ($db->is_existence($token, 'token')) {
+        goto newToken;
+    }
+    $output['res'] = 'generate';
+    $output['url'] = $_SERVER['HTTP_ORIGIN'] . '/' . $token;
+    // Insert token and URL to database
+    $db->query("INSERT INTO uniq_url (token, url) VALUE ('{$token}', '{$__post->url}')");
+    $db->close();
+    // Show in front
+    die(json_encode($output));
 }
-
-
-/// *********************************************************
-
-
-$res = '';
-$__post = array_map('htmlspecialchars', $_POST);
-
-// Check existence URL in database
-if ($res = $db->is_existence($__post['url'], 'url')) {
-    die (json_encode($_SERVER['HTTP_ORIGIN']. '/' . $res[0]['token']));
-}
-
-// create token
-$__post['token'] = $url->get_token(6);
-
-newToken:
-// Check existence token in database
-if ($db->is_existence($__post['token'], 'token')) {
-    $__post['token'] = $url->get_token(6);
-    goto newToken;
-}
-
-// Insert token and URL to database
-$db->query("INSERT INTO uniq_url (token, url) VALUE ('{$__post['token']}', '{$__post['url']}')");
-$db->close();
-
-// Show in front
-exit(json_encode($_SERVER['HTTP_ORIGIN'] . '/' . $__post['token']));

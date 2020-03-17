@@ -27,8 +27,10 @@ class Url
      *
      * @return string
      */
-    public function get_domain(string $url)
+    public function get_domain(string $url = null)
     {
+        if($url === null )
+            Debug::jsn($_SERVER);
         $url = parse_url($url);
 
         return "{$url['scheme']}://{$url['host']}";
