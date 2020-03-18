@@ -119,6 +119,9 @@ if ( ! function_exists('is_valid_url()')) {
         if (empty($url)) {
             return 'URL must not empty';
         }
+        if(preg_match('~"~', $url) || preg_match("~'~", $url) || preg_match('~`~', $url)){
+            return 'Enter URL without quote';
+        }
         if (stripos($url, 'http') === false || stripos($url, '://') === false || stripos($url, '.') === false) {
             return 'Enter correct URL';
         }
