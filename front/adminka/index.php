@@ -43,18 +43,19 @@
                 <?php else: ?>
                     <div class="row">
                         <?php foreach ($args as $item): ?>
-                            <div class="col-xl-6">
+                            <div class="col-xl-6 js-item" id="<?= $item['id']; ?>">
                                 <div class="d-flex flex-column">
-                                <div class="bg-dark text-white m-2">
-                                    <div class="p-2">ID: <?= $item['id']; ?></div>
-                                    <div class="p-2">url: <?= $item['url']; ?></div>
-                                    <div class="p-2">token: <?= $item['token']; ?></div>
-                                    <div class="p-2 text-right">
-                                        <button class="btn btn-primary">Go</button>
-                                        <button class="btn btn-info">Edit</button>
-                                        <button class="btn btn-danger">Remove</button>
+                                    <div class="bg-dark text-white m-2">
+                                        <div class="p-2">ID: <?= $item['id']; ?></div>
+                                        <div class="p-2">
+                                            url: <a href="<?= $item['url']; ?>" class="p-2"><?= $item['url']; ?></a>
+                                        </div>
+                                        <div class="p-2">token: <?= $item['token']; ?></div>
+                                        <div class="p-2 text-right">
+<!--                                            <button class="btn btn-info js-edit">Edit</button>-->
+                                            <button class="btn btn-danger js-remove">Remove</button>
+                                        </div>
                                     </div>
-                                </div>
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -75,8 +76,8 @@
 
 
 </div>
-<link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/assets/css/custom.css">
-<script src="<?= get_template_directory_uri(); ?>/assets/js/custom.js"></script>
+<link rel="stylesheet" href="<?= admin_url(); ?>/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="<?= admin_url(); ?>/assets/css/custom.css">
+<script src="<?= admin_url(); ?>/assets/js/custom.js"></script>
 </body>
 </html>

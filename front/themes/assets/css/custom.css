@@ -14,8 +14,6 @@ section form {
   margin-right: auto;
   max-width: 736px;
   overflow: hidden; }
-  section form .form-control {
-    width: 100vh; }
 
 .unique-url__result {
   margin-top: 4vh; }
