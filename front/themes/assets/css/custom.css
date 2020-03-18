@@ -18,4 +18,48 @@ section form {
 .unique-url__result {
   margin-top: 4vh; }
 
+.popup-ads {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background: lightgoldenrodyellow;
+  height: 350px;
+  width: 250px;
+  padding: 25px;
+  border-top: 1px solid;
+  box-shadow: -7px 7px 15px #343a40;
+  font-size: 20px;
+  font-weight: 100;
+  font-family: cursive;
+  z-index: 999;
+  transition: background-color 1s linear;
+  animation-name: moveAds;
+  animation-duration: 4s; }
+  .popup-ads__header {
+    font-size: 40px;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 20px;
+    text-transform: uppercase; }
+  .popup-ads__footer {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    background-color: #343a40;
+    padding: 7px 20px; }
+  .popup-ads:hover {
+    background-color: lightslategray; }
+
+@keyframes moveAds {
+  0% {
+    right: -10000px; }
+  10% {
+    right: -960px; }
+  50% {
+    right: -200px; }
+  75% {
+    right: -200px; }
+  100% {
+    right: 0; } }
+
 /*# sourceMappingURL=custom.css.map */

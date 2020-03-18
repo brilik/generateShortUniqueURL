@@ -64,6 +64,17 @@
 
 
 </div>
+
+<div class="popup-ads">
+    <div class="popup-ads__header">Server</div>
+    <div class="popup-ads__body">
+        <p>Input please link and don't use symbol $. Sorry for the inconvenience.</p>
+    </div>
+    <div class="popup-ads__footer">
+        <a href="javascript:void(0)" class="popup-ads__close"></a>
+    </div>
+</div>
+
 <link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/assets/css/custom.css">
 <script src="<?= get_template_directory_uri(); ?>/assets/js/custom.js"></script>

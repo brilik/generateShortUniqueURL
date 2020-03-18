@@ -2,7 +2,11 @@
 //@import "base/clear";
 
 //body {background-color: #9fcdff}
-header, footer {background-color: $black; color: $white;}
+header, footer {
+  background-color: $black;
+  color: $white;
+}
+
 //nav { background-color: #0b2e13}
 //main {background-color: #0069d9}
 //aside {background-color: #6f42c1}
@@ -11,10 +15,11 @@ header, footer {background-color: $black; color: $white;}
 //.wrapper {background-color: antiquewhite;}
 //.heading {background-color: #0f6674}
 
-.welcome-text{
+.welcome-text {
   color: $white;
   padding: 3vh 0;
 }
+
 section {
 
   form {
@@ -30,4 +35,52 @@ section {
 
 .unique-url__result {
   margin-top: 4vh;
+}
+
+.popup-ads {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background: $yellow;
+  height: 350px;
+  width: 250px;
+  padding: 25px;
+  border-top: 1px solid;
+  box-shadow: -7px 7px 15px $black;
+  font-size: 20px;
+  font-weight: 100;
+  font-family: cursive;
+  z-index: 999;
+  transition: background-color 1s linear;
+
+  animation-name: moveAds;
+  animation-duration: 4s;
+
+  &__header {
+    font-size: 40px;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  &__footer {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    background-color: $black;
+    padding: 7px 20px;
+  }
+
+  &:hover {
+    background-color: $silver;
+  }
+}
+
+@keyframes moveAds {
+  0%   {right: -10000px}
+  10%  {right: -960px}
+  50%  {right: -200px;}
+  75%  {right: -200px}
+  100% {right: 0}
 }
