@@ -7,8 +7,8 @@ class Route
     {
         try {
 
-            if (!$this->is_existence($request)) {
-                $request = trim($request, '/');
+            if ( ! $this->is_existence($request)) {
+                $request      = trim($request, '/');
                 $this->_url[] = '/' . $request;
             }
         } catch (Exception $e) {
@@ -28,7 +28,7 @@ class Route
 
     public function init()
     {
-        switch($_SERVER['REQUEST_URI']){
+        switch ($_SERVER['REQUEST_URI']) {
             case '/':
                 the_block('index');
                 break;
@@ -57,8 +57,35 @@ class Route
                 the_block('adminka__signin');
                 break;
             default:
-                the_block('notFound');
+                $this->find_and_redirect();
                 break;
+        }
+    }
+
+    private function check_more_request()
+    {
+        $req = explode('/', $_SERVER['REDIRECT_URL']);
+        $req = array_filter($req, function ($item) {
+            return ! empty($item);
+        });
+        if (count($req) > 1) {
+            the_block('notFound');
+        }
+    }
+
+    private function find_and_redirect()
+    {
+        $this->check_more_request();
+
+        require_once DIR_BACK . '/class/DataBase.php';
+
+        $db = new DataBase(DB_NAME, DB_HOST,DB_USER, DB_PASS,'UTF-8');
+
+        $token = str_replace('/','',$_SERVER['REQUEST_URI']);
+
+        if($res = $db->is_existence($token,'token')[0]){
+            header("Location: {$res['url']}");
+            exit;
         }
     }
 }
