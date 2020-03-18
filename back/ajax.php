@@ -70,7 +70,8 @@ if ($_POST->action == 'generate') {
     $output['res'] = 'generate';
     $output['url'] = $_SERVER['HTTP_ORIGIN'] . '/' . $token;
     // Insert token and URL to database
-    $db->query("INSERT INTO uniq_url (token, url) VALUE ('{$token}', '{$__post->url}')");
+    $url = htmlspecialchars($__post->url);
+    $db->query("INSERT INTO uniq_url (token, url) VALUE ('{$token}', '{$url}')");
     // Show in front
     die(json_encode($output));
 }
