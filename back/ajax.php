@@ -71,7 +71,13 @@ if ($_POST->action == 'generate') {
     $output['url'] = $_SERVER['HTTP_ORIGIN'] . '/' . $token;
     // Insert token and URL to database
     $db->query("INSERT INTO uniq_url (token, url) VALUE ('{$token}', '{$__post->url}')");
-    $db->close();
     // Show in front
     die(json_encode($output));
 }
+if ($_POST->action == 'remove') {
+    $output['res'] = 'remove';
+    $output['id']  = $_POST->id;
+    $db->query("DELETE FROM uniq_url WHERE id = {$_POST->id}");
+    die(json_encode($output));
+}
+$db->close();
