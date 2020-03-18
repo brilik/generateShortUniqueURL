@@ -47,10 +47,8 @@
                                 <div class="d-flex flex-column">
                                     <div class="bg-dark text-white m-2">
                                         <div class="p-2">ID: <?= $item['id']; ?></div>
-                                        <div class="p-2">
-                                            url: <a href="<?= $item['url']; ?>" class="p-2"><?= $item['url']; ?></a>
-                                        </div>
-                                        <div class="p-2">token: <?= $item['token']; ?></div>
+                                        <div class="p-2">url: <a href="<?= $item['url']; ?>" class="p-2"><?= $item['url']; ?></a></div>
+                                        <div class="p-2">token: <a href="<?= $item['token']; ?>" class="p-2"><?= $item['token']; ?></a>                                        </div>
                                         <div class="p-2 text-right">
 <!--                                            <button class="btn btn-info js-edit">Edit</button>-->
                                             <button class="btn btn-danger js-remove">Remove</button>
