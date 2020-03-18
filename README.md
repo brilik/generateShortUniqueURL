@@ -8,7 +8,7 @@
 
 <h4>Logical</h4>
 <ol>
-<li></li>
+<li>Get request and respone redirect or no page</li>
 <li>Get <code>URL</code> from form</li>
 <li>Check existence <code>URL</code> in database    
     <ul>
